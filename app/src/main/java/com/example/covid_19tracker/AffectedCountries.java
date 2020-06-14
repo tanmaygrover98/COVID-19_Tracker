@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AffectedCountries extends AppCompatActivity {
 
@@ -46,7 +47,7 @@ public class AffectedCountries extends AppCompatActivity {
         editText= findViewById(R.id.etSearch);
         listView= findViewById(R.id.listView);
         simpleArcLoader= findViewById(R.id.loader2);
-        getSupportActionBar().setTitle("Affected Countries");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Affected Countries");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -75,7 +76,7 @@ public class AffectedCountries extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== R.id.home){
+        if(item.getItemId()== android.R.id.home){
             finish();
         }
         return super.onOptionsItemSelected(item);
