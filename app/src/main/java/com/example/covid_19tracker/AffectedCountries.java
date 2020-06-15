@@ -1,13 +1,16 @@
 package com.example.covid_19tracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -51,7 +54,21 @@ public class AffectedCountries extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        ActionBar actionBar= getSupportActionBar();
+        if(actionBar!= null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
+        }
+
         fetchData();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                startActivity(new Intent(getApplicationContext(),DetailsActivity.class).putExtra("position",position));
+
+            }
+        });
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override

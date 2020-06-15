@@ -1,5 +1,6 @@
 package com.example.covid_19tracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         simpleArcLoader= findViewById(R.id.loader);
         scrollView= findViewById(R.id.scrollStats);
         pieChart= findViewById(R.id.piechart);
+
+        ActionBar actionBar= getSupportActionBar();
+        if(actionBar!= null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
+        }
 
         fetchData();
     }
